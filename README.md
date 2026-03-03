@@ -1,7 +1,7 @@
 # Text2Image AI 🖼️  
 
-Generate AI-generated images from text prompts with **multi-language support**!  
-This package returns **Base64 images** directly.  
+✅ **Free to use! NO LIMIT!**
+🖌️ Generate **AI-powered** images from text prompts! Supports Base64 output and **multiple languages**.
 
 ![NPM Version](https://img.shields.io/npm/v/text2image-ai?color=blue&style=flat-square)  
 ![Downloads](https://img.shields.io/npm/dt/text2image-ai?color=green&style=flat-square)  

@@ -1,6 +1,6 @@
 {
     "name": "text2image-ai",
-    "version": "1.0.0",
+    "version": "1.0.5",
     "description": "A simple Node.js wrapper for generating AI images from text prompts with multi-language support.",
     "main": "index.js",
     "scripts": {
@@ -31,7 +31,8 @@
       "image-converter",
       "node-fetch",
       "deep-learning",
-      "ai-tools"
+      "ai-tools",
+      "free"
     ],
     "author": "Utku Berkay Koç",
     "license": "MIT",
