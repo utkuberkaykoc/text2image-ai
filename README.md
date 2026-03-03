@@ -1,11 +1,21 @@
 # Text2Image AI 🖼️  
 
-✅ **Free to use! NO LIMIT!**
-🖌️ Generate **AI-powered** images from text prompts! Supports Base64 output and **multiple languages**.
+✅ **Free to use! NO LIMIT!**  
+🖌️ Generate **AI-powered** images from text prompts with **10 style presets**, **batch generation**, **save-to-file**, and **multi-language** support!
 
 ![NPM Version](https://img.shields.io/npm/v/text2image-ai?color=blue&style=flat-square)  
 ![Downloads](https://img.shields.io/npm/dt/text2image-ai?color=green&style=flat-square)  
 ![License](https://img.shields.io/npm/l/text2image-ai?style=flat-square)  
+
+---
+
+## 🆕 What's New in v2.0.0  
+
+🔥 **10 Style Presets** – `realistic`, `anime`, `oil`, `watercolor`, `pixel`, `3d`, `cyberpunk`, `fantasy`, `minimal`, `sketch`  
+🔥 **Generate & Save** – One-call image generation + file saving  
+🔥 **Batch Generation** – Generate multiple images with progress tracking  
+🔥 **Negative Prompts** – Specify what to avoid in generation  
+🔥 **Auto Directory Creation** – Saves create missing folders automatically  
 
 ---
 
@@ -17,88 +27,88 @@ npm install text2image-ai
 
 ---
 
-## 🚀 Features  
-✅ **AI-powered image generation from text**  
-✅ **Supports multiple languages (`en`, `tr`, `es`, `fr`, `de`)**  
-✅ **Returns Base64 encoded images**  
-✅ **Lightweight and easy to use**  
-✅ **Can be used in CLI or server-side applications**  
-
----
-
-## 🔥 Quick Start  
+## 🚀 Quick Start  
 
 ```js
-const { generateImage } = require("text2image-ai");
+const { generateImage, generateAndSave } = require("text2image-ai");
 
-async function main() {
-  const result = await generateImage("a futuristic city at sunset", "en");
-  console.log(result);
-}
+// Basic generation
+const result = await generateImage("a futuristic city at sunset");
+console.log(result.base64Image);
 
-main();
-```
+// With style preset
+const anime = await generateImage("a warrior princess", "en", { style: "anime" });
 
-📌 **Example Output:**  
-```json
-{
-  "originalPrompt": "a futuristic city at sunset",
-  "translatedPrompt": "a futuristic city at sunset",
-  "language": "en",
-  "base64Image": "/9j/4AAQSkZ..."
-}
+// Generate and save directly
+const { savedPath } = await generateAndSave(
+  "a cyberpunk city at night",
+  "output.jpg",
+  "en",
+  { style: "cyberpunk" }
+);
+console.log(`Saved: ${savedPath}`);
 ```
 
 ---
 
-## 💾 Saving the Image (Base64 to File)  
+## 🎨 Style Presets  
 
-You can **convert the Base64 image to a file** using `fs` in Node.js.  
+| Style | Description |
+|---|---|
+| `realistic` | Ultra realistic, photographic, 8K |
+| `anime` | Anime style, vibrant, cel shaded |
+| `oil` | Oil painting, classical art |
+| `watercolor` | Watercolor, soft edges, pastel |
+| `pixel` | Pixel art, retro, 8-bit |
+| `3d` | 3D render, Octane, Cinema 4D |
+| `cyberpunk` | Neon lights, dark futuristic |
+| `fantasy` | Magical, ethereal illustration |
+| `minimal` | Minimalist, clean lines |
+| `sketch` | Pencil sketch, hand drawn |
 
 ```js
-const { generateImage } = require("text2image-ai");
-const fs = require("fs");
+const { getStyles } = require("text2image-ai");
+console.log(getStyles()); // See all available style presets
+```
 
-async function saveImage() {
-  const result = await generateImage("a cyberpunk city at night", "en");
-  
-  // Remove the data URI prefix and convert Base64 to binary
-  const base64Data = result.base64Image;
-  const buffer = Buffer.from(base64Data, "base64");
+---
 
-  // Save the image
-  fs.writeFileSync("output.jpg", buffer);
-  console.log("✅ Image saved as output.jpg");
-}
+## 📦 Batch Generation  
 
-saveImage();
+```js
+const { batchGenerate } = require("text2image-ai");
+
+const results = await batchGenerate(
+  ["a red dragon", "a blue ocean", "a green forest"],
+  "en",
+  { style: "fantasy" },
+  (progress) => console.log(`${progress.percent}% - ${progress.lastPrompt}`)
+);
+
+console.log(`Generated ${results.filter(r => r.success).length} images`);
 ```
 
 ---
 
 ## 🌍 Language Support  
 
-| Language Code | Language |
-|--------------|---------|
+| Code | Language |
+|---|---|
 | `en` | English |
 | `tr` | Turkish |
 | `es` | Spanish |
 | `fr` | French |
 | `de` | German |
 
-If a different language is provided, it defaults to English.  
-
 ---
 
 ## 📜 License  
-
 This project is licensed under the **MIT License**.  
 
 ---
 
 ## 🌟 Support & Contact  
-
 - **GitHub Issues:** [Report Bugs or Request Features](https://github.com/utkuberkaykoc/text2image-ai/issues)  
 - **⭐ Give a Star:** If you like this package, support by starring the repo!  
 
-🚀 **Ready to create amazing AI-generated images?** 😎  
+🚀 **Create something amazing!** 🎨✨

@@ -1,7 +1,7 @@
 {
     "name": "text2image-ai",
-    "version": "1.0.5",
-    "description": "A simple Node.js wrapper for generating AI images from text prompts with multi-language support.",
+    "version": "2.0.0",
+    "description": "Generate AI images from text prompts with style presets, batch generation, save-to-file, and multi-language support. Free & unlimited.",
     "main": "index.js",
     "scripts": {
       "test": "node test.js"
